@@ -9,7 +9,11 @@ def model_data(filename, out_file):
 
 def _clean_sheet(filename):
     xlsx = pd.read_excel(io=filename, sheet_name="Response Rates", header=None)
-    # Todo: Dataset cleaning
+
+    # Fix negative sign errors
+    xlsx.loc[14, 2] = abs(xlsx.loc[14, 2])
+    xlsx.loc[15, 7] = abs(xlsx.loc[15, 7])
+
     return xlsx
 
 

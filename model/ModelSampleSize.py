@@ -9,11 +9,12 @@ def model_data(filename, out_file):
 
 def _clean_sheet(filename):
     xlsx = pd.read_excel(io=filename, sheet_name="Sample Size", header=None)
-    print(xlsx.loc[18].keys())
 
-    print(xlsx.loc[19, 2])
+    # Fix all industries total error
     xlsx.loc[19, 2] = int(xlsx.loc[19, 2])
-    print(xlsx.loc[19][2])
+
+    # Fix total error
+    xlsx.loc[27, 4] = xlsx.loc[27, 1] + xlsx.loc[27, 2] + xlsx.loc[27, 3]
     return xlsx
 
 
@@ -58,7 +59,7 @@ def _write_sample_size(xlsx, file):
     # Create sample workforce size data
     for val in range(1, 5):
         file.write(':ss2_{}_{} '.format(27, val) + 'rdf:type qb:Observation;\n')
-        file.write('	 rdf:value ' + str(xlsx.iloc[27][val]) + ';\n')
+        file.write('	 rdf:value {}'.format(xlsx.iloc[27][val])+ ';\n')
         file.write('	 qb:dataSet :ss2;\n')
         file.write('	 qb:dimension :' + ModelUtils.clean_label(xlsx.iloc[26][val]) + ';\n')
         file.write('	 qb:dimension :' + ModelUtils.clean_label(xlsx.iloc[27][0]) + '.\n\n')

@@ -36,6 +36,10 @@ class ModelCovidImpacts:
         file.write(':SurveyedMetric rdf:type owl:Class ;\n')
         file.write('	 rdfs:subClassOf qb:DimensionProperty .\n\n')
 
+        file.write('# Country represented in the data\n')
+        file.write(':Country rdf:type owl:Class ;\n')
+        file.write('	 rdfs:subClassOf qb:DimensionProperty .\n\n')
+
     def _create_data_header(self, file):
         file.write('@prefix : <http://oscarvl.synology.me/data/> .\n')
         file.write('@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n')
