@@ -1,5 +1,5 @@
 from utils import ModelUtils
-from model import ModelSampleSize, ModelResponseRates
+from model import ModelSampleSize, ModelResponseRates, ModelTradingStatus
 import pandas as pd
 
 
@@ -7,10 +7,6 @@ class ModelCovidImpacts:
 
     def __init__(self, filename):
         self.filename = filename
-        # self.xlsx = load_workbook(filename=filename)
-        # print('Opening dataset:', filename)
-        # print(self.xlsx.get_sheet_names())
-        # assert self.xlsx['Read me']['A1'].value == 'Business impacts of COVID-19 data'
 
     def create_rdf_model(self):
         with open('CovidImpactsSchema.ttl', 'w', encoding='utf-8') as schema:
@@ -21,6 +17,7 @@ class ModelCovidImpacts:
             self._write_industry_types(data)
             ModelSampleSize.model_data(self.filename, data)
             ModelResponseRates.model_data(self.filename, data)
+            ModelTradingStatus.model_data(self.filename, data)
 
     def _create_schema(self, file):
         file.write('@prefix : <http://oscarvl.synology.me/schema/covid-impacts/> .\n')
