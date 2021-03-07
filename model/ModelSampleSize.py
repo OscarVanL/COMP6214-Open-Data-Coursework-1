@@ -1,6 +1,5 @@
 from utils import ModelUtils
 import pandas as pd
-import math
 
 
 def model_data(filename, out_file):
@@ -13,7 +12,7 @@ def _clean_sheet(filename):
     print(xlsx.loc[18].keys())
 
     print(xlsx.loc[19, 2])
-    xlsx.loc[19, 2] = math.ceil(xlsx.loc[19, 2])
+    xlsx.loc[19, 2] = int(xlsx.loc[19, 2])
     print(xlsx.loc[19][2])
     return xlsx
 
