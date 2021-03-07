@@ -13,10 +13,10 @@ class ModelCovidImpacts:
         # assert self.xlsx['Read me']['A1'].value == 'Business impacts of COVID-19 data'
 
     def create_rdf_model(self):
-        with open('CovidImpactsSchema.ttl', 'w') as schema:
+        with open('CovidImpactsSchema.ttl', 'w', encoding='utf-8') as schema:
             self._create_schema(schema)
 
-        with open('CovidImpactsData.ttl', 'w') as data:
+        with open('CovidImpactsData.ttl', 'w', encoding='utf-8') as data:
             self._create_data_header(data)
             self._write_industry_types(data)
             ModelSampleSize.model_data(self.filename, data)

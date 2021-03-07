@@ -1,5 +1,5 @@
 from utils import ModelUtils
-from pandas import pd
+import pandas as pd
 
 
 def model_data(filename, out_file):
@@ -19,7 +19,8 @@ def _write_sample_size_data(xlsx, file):
     # Create DataSet definition
     file.write(':ss1 rdf:type qb:DataSet;\n')
     file.write('	 dc:title "' + xlsx.iloc[1][1] + '";\n')
-    file.write('	 rdfs:comment "' + xlsx.columns[0] + '".\n\n')
+    file.write('	 rdfs:label "' + xlsx.columns[0] + '";\n')
+    file.write('	 rdfs:comment "' + xlsx.iloc[21][0] + '".\n\n')
 
     # Create SurveyedMetric for each workforce size heading
     for cell in xlsx.iloc[2][1:4]:
@@ -37,6 +38,8 @@ def _write_sample_size_data(xlsx, file):
             file.write('	 qb:dimension :' + ModelUtils.clean_label(rows.index[col+1]) + ';\n')
             file.write('	 qb:dimension :' + ModelUtils.clean_label(rows[0]) + '.\n\n')
 
+    # ==============
+
     file.write('# Sample Size Dataset #2\n')
 
     # Create DataSet definition
@@ -50,7 +53,6 @@ def _write_sample_size_data(xlsx, file):
 
     # Create sample workforce size data
     for val in range(1, 5):
-        print(val)
         file.write(':ss2_{}_{} '.format(26, val) + 'rdf:type qb:Observation;\n')
         file.write('	 rdf:value ' + str(xlsx.iloc[26][val]) + ';\n')
         file.write('	 qb:dataSet :ss2;\n')
