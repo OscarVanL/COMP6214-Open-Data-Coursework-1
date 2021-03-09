@@ -14,6 +14,10 @@ def _clean_sheet(filename):
     xlsx.loc[14, 2] = abs(xlsx.loc[14, 2])
     xlsx.loc[15, 7] = abs(xlsx.loc[15, 7])
 
+    # Make workforce size label consistent with other sheets.
+    xlsx.loc[3, 3] = 'All Size Bands'
+    xlsx.loc[3, 9] = 'All Size Bands'
+
     return xlsx
 
 
@@ -35,6 +39,7 @@ def _write_response_rates(xlsx, file):
             file.write(':rr1_{}_{} '.format(index, col+1) + 'rdf:type qb:Observation;\n')
             file.write('	 rdf:value ' + str(rows[col+1]) + ';\n')
             file.write('	 qb:dataSet :rr1;\n')
+            file.write('	 qb:dimension :TP2020;\n')
             file.write('	 qb:dimension :' + ModelUtils.clean_label(rows.index[col+1]) + ';\n')
             file.write('	 qb:dimension :' + ModelUtils.clean_label(rows[0]) + '.\n\n')
 
@@ -54,5 +59,6 @@ def _write_response_rates(xlsx, file):
             file.write(':rr2_{}_{} '.format(index, col+7) + 'rdf:type qb:Observation;\n')
             file.write('	 rdf:value ' + str(rows[col+1]) + ';\n')
             file.write('	 qb:dataSet :rr2;\n')
+            file.write('	 qb:dimension :TP2020;\n')
             file.write('	 qb:dimension :' + ModelUtils.clean_label(rows.index[col+1]) + ';\n')
             file.write('	 qb:dimension :' + ModelUtils.clean_label(rows[0]) + '.\n\n')
