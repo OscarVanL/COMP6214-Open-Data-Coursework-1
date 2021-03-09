@@ -1,5 +1,6 @@
 from utils import ModelUtils
-from model import ModelSampleSize, ModelResponseRates, ModelTradingStatus, ModelGovtSchemes1, ModelGovtSchemes2
+from model import ModelSampleSize, ModelResponseRates, ModelTradingStatus, ModelGovtSchemes1, ModelGovtSchemes2, \
+    ModelGovtSchemes3
 import pandas as pd
 
 
@@ -25,6 +26,7 @@ class ModelCovidImpacts:
             ModelTradingStatus.model_data(self.filename, data)
             ModelGovtSchemes1.model_data(self.filename, data)
             ModelGovtSchemes2.model_data(self.filename, data)
+            ModelGovtSchemes3.model_data(self.filename, data)
 
     def _create_schema(self, file):
         file.write('@prefix : <http://oscarvl.synology.me/schema/covid-impacts/> .\n')
