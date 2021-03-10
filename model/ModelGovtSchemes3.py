@@ -47,7 +47,6 @@ def _write_trading_status(xlsx, file):
             file.write('	 qb:dimension :' + ModelUtils.clean_label(rows.index[col + 1]) + ';\n')
             file.write('	 qb:dimension :' + ModelUtils.clean_label(rows[0]) + '.\n\n')
 
-
     file.write('# Government Schemes (3) Dataset #2\n')
     # Create DataSet definition
     file.write(':gs3_2 rdf:type qb:DataSet;\n')

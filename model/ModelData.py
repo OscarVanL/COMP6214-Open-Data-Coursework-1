@@ -95,22 +95,21 @@ class ModelCovidImpacts:
         # Create Country for each represented country
         xlsx = pd.read_excel(io=self.filename, sheet_name="Trading Status ", header=None)
         for cell in xlsx.iloc[45:50, 0]:
-            print(cell)
-            file.write(':' + ModelUtils.clean_label(cell) + ' rdf:type :Country;\n')
+            file.write(':' + ModelUtils.clean_label(cell) + ' rdf:type covid-impacts:Country;\n')
             file.write('	 dc:title "' + cell + '".\n\n')
 
     def _write_trading_status_types(self, file):
         # Create TradingStatus for surveyed companies
         xlsx = pd.read_excel(io=self.filename, sheet_name="Trading Status ", header=None)
         for cell in xlsx.iloc[3][1:4]:
-            file.write(':' + ModelUtils.clean_label(cell) + ' rdf:type :TradingStatus;\n')
+            file.write(':' + ModelUtils.clean_label(cell) + ' rdf:type covid-impacts:TradingStatus;\n')
             file.write('	 dc:title "' + cell + '".\n\n')
 
     def _write_workforce_size_types(self, file):
         xlsx = ModelResponseRates._clean_sheet(self.filename)
         # Create WorkforceSize for each workforce size heading
         for cell in xlsx.iloc[3][1:4]:
-            file.write(':' + ModelUtils.clean_label(cell) + ' rdf:type :WorkforceSize;\n')
+            file.write(':' + ModelUtils.clean_label(cell) + ' rdf:type covid-impacts:WorkforceSize;\n')
             file.write('	 dc:title "' + cell + '".\n\n')
 
 
