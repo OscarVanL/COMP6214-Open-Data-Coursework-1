@@ -11,7 +11,7 @@
 	rdfs:subClassOf qb:DimensionProperty .
 
 # What industry the data element represents
-:Industry rdfs:subClassOf owl:Class ;
+:Industry rdf:type owl:Class ;
 	 rdfs:subClassOf qb:DimensionProperty .
 
 # Government initiative applied for

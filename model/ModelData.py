@@ -42,7 +42,7 @@ class ModelCovidImpacts:
         file.write('	rdfs:subClassOf qb:DimensionProperty .\n\n')
 
         file.write('# What industry the data element represents\n')
-        file.write(':Industry rdfs:subClassOf owl:Class ;\n')
+        file.write(':Industry rdf:type owl:Class ;\n')
         file.write('	 rdfs:subClassOf qb:DimensionProperty .\n\n')
 
         file.write('# Government initiative applied for\n')
