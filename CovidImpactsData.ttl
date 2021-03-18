@@ -79,6 +79,12 @@
 :Wehavenotappliedforanyoftheseinitiatives rdf:type covid-impacts:GovernmentInitiative;
 	 dc:title "We have not applied for any of these initiatives".
 
+:Wehaventreceivedanythatweappliedfor rdf:type covid-impacts:GovernmentInitiative;
+	 dc:title "We haven't received any that we applied for".
+
+:Noneoftheabove rdf:type covid-impacts:GovernmentInitiative;
+	 dc:title "None of the above".
+
 :England rdf:type covid-impacts:Country;
 	 dc:title "England".
 

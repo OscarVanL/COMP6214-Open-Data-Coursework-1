@@ -91,6 +91,14 @@ class ModelCovidImpacts:
             file.write(':' + ModelUtils.clean_label(scheme) + ' rdf:type covid-impacts:GovernmentInitiative;\n')
             file.write('	 dc:title "' + scheme + '".\n\n')
 
+        xlsx = pd.read_excel(io=self.filename, sheet_name="Government Schemes (2)")
+        file.write(':' + ModelUtils.clean_label(xlsx.iloc[2][7]) + ' rdf:type covid-impacts:GovernmentInitiative;\n')
+        file.write('	 dc:title "' + xlsx.iloc[2][7] + '".\n\n')
+
+        xlsx = pd.read_excel(io=self.filename, sheet_name="Government Schemes (3)")
+        file.write(':' + ModelUtils.clean_label(xlsx.iloc[2][7]) + ' rdf:type covid-impacts:GovernmentInitiative;\n')
+        file.write('	 dc:title "' + xlsx.iloc[2][7] + '".\n\n')
+
     def _write_country_types(self, file):
         # Create Country for each represented country
         xlsx = pd.read_excel(io=self.filename, sheet_name="Trading Status ", header=None)
