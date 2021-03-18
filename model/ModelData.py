@@ -74,7 +74,7 @@ class ModelCovidImpacts:
 
     def _write_time_range(self, file):
         # Create dataset time range description
-        file.write(':TR2020 rdf:type :TimeRange;\n')
+        file.write(':TP2020 rdf:type :TimeRange;\n')
         file.write('	 dc:title "Survey reference period: 6 April 2020 to 19 April 2020" .\n\n')
 
     def _write_industry_types(self, file):
