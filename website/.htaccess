@@ -1,0 +1,10 @@
+AddType  text/turtle             .ttl
+
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTP_ACCEPT} text/turtle
+
+RewriteRule .* - [S=2]
+RewriteRule ^covid-impacts/data/$ data/CovidImpactsData.ttl [L]
+RewriteRule ^covid-impacts/schema/$ data/CovidImpactsSchema.ttl [L]
